@@ -30,3 +30,5 @@ begin
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
+
+Jeweler::GemcutterTasks.new
