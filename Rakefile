@@ -19,6 +19,7 @@ begin
     gemspec.homepage = "http://browsercms.org"
     gemspec.description = "Allows developers to easily pull content from a production CMS to their local machine"
     gemspec.authors = ["BrowserMedia"]
+    gemspec.files = Dir["app/**/*"]
     gemspec.files += Dir["db/migrate/*.rb"]
     gemspec.files -= Dir["db/migrate/*_browsercms_*.rb"]
     gemspec.files -= Dir["db/migrate/*_load_seed_data.rb"]
