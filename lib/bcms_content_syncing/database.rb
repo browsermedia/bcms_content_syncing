@@ -1,13 +1,10 @@
 module Cms
 
-  # Parent class for database plugins for the installer.  To create a new
-  # database handler, subclass this class and define a +yml+ class and
-  # optionally a +create_database+ method.
+  # Handles management of Cms database related operations.
   class Database
     @@db_map = {}
 
-    # Back up the database.  This is fully DB and schema agnostic.  It
-    # serializes all tables to a single YAML file.
+    # Back up the database.  This is fully DB and schema agnostic.  It serializes all tables to a single YAML file.
     def self.backup(skip_tables=[])
       STDERR.puts "** backup **"
 
@@ -32,8 +29,7 @@ module Cms
       STDERR.puts "Backup complete"
     end
 
-    # Restore a backup created by +backup+.  Deletes all data before
-    # importing.
+    # Restore a backup created by +backup+.  Deletes all data before importing.
     def self.restore(filename)
       STDERR.puts "Reading data"
       data = YAML.load(File.read(filename))
