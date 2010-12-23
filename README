@@ -43,3 +43,8 @@ References:
 ==========
 
 Based on code from the Rails App Installer found: http://code.google.com/p/rails-app-installer/
+
+TODO:
+====
+
+1. Test that cap sync:db works for project (placement of file)

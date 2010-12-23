@@ -4,14 +4,18 @@ module Cms
   class Database
     @@db_map = {}
 
-    # Back up the database.  This is fully DB and schema agnostic.  It serializes all tables to a single YAML file.
+    # Back up the database.  This is fully DB and schema agnostic.  It serializes all tables to a single YAML file which
+    # is timestamped to when the backup occurred. Creates a copy of that file named 'backup-latest.yml' file as well, to
+    # make syncing easier.
     def self.backup(skip_tables=[])
       STDERR.puts "** backup **"
 
       interesting_tables = ActiveRecord::Base.connection.tables.sort - ['sessions'] - skip_tables
       backup_dir = File.join(RAILS_ROOT, 'db', 'backup')
       FileUtils.mkdir_p backup_dir
-      backup_file = File.join(backup_dir, "backup-#{Time.now.strftime('%Y%m%d-%H%M')}.yml")
+
+      file_name           = "backup-#{Time.now.strftime('%Y%m%d-%H%M')}.yml"
+      backup_file = File.join(backup_dir, file_name)
 
       STDERR.puts "Backing up to #{backup_file}"
 
@@ -26,15 +30,15 @@ module Cms
         YAML.dump data, file
       end
 
+      system "cp db/backup/#{file_name} db/backup/backup-latest.yml"
       STDERR.puts "Backup complete"
     end
 
     # Restore a backup created by +backup+.  Deletes all data before importing.
     def self.restore(filename)
-      STDERR.puts "Reading data"
       data = YAML.load(File.read(filename))
 
-      STDERR.puts "Restoring data"
+      STDERR.puts "Restoring data from #{filename}"
       data.each_key do |table|
         if table == 'schema_info'
           ActiveRecord::Base.connection.execute("delete from schema_info")

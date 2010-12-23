@@ -19,8 +19,8 @@ module Cms
 
             run("cd #{current_path} && #{rake} db:backup RAILS_ENV=production")
 
-            filename = 'backup-20101215-1731.yml'
-            download "#{current_path}/db/backup/#{filename}", "/Users/peakpg/projects/bcms.org/db/backup/#{filename}"
+            filename = 'backup-latest.yml'
+            download "#{current_path}/db/backup/#{filename}", "db/backup/#{filename}"
 
             system 'rake db:restore'
 

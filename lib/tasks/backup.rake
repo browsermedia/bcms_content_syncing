@@ -8,7 +8,7 @@ namespace :db do
 
   desc "Drops and recreates the database from most recent backup in db/backup. Can specify FILE=filename also."
   task :restore => :environment do
-    filename = ENV['FILE'].blank? ? Dir['db/backup/*.yml'].last : ENV['FILE']
+    filename = ENV['FILE'].blank? ? Dir['db/backup/backup-latest.yml'].last : ENV['FILE']
     Cms::Database.restore(filename)
   end
 
