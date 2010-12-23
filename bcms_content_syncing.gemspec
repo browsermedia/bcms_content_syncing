@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
      "lib/bcms_content_syncing.rb",
      "lib/bcms_content_syncing/cap_tasks.rb",
      "lib/bcms_content_syncing/database.rb",
+     "lib/bcms_content_syncing/rake_tasks.rb",
      "lib/bcms_content_syncing/routes.rb",
      "lib/tasks/backup.rake",
      "public/404.html",

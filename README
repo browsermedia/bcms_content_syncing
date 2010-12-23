@@ -16,7 +16,16 @@ Installation:
 
     require 'bcms_content_syncing/cap_tasks'
 
-3. Do a capistrano deployment to make sure the production server has the needed gem and rake tasks.
+3. Add the following to the projects 'Rakefile'
+
+    require 'tasks/bcms_content_syncing'
+
+4. Create a file in 'lib/tasks' called 'bcms_content_syncing.rb' with the following in it.
+
+    require 'bcms_content_syncing/rake_tasks'
+    Cms::ContentSyncing.load_rake_tasks
+
+5. Do a capistrano deployment to make sure the production server has the needed gem and rake tasks.
 
     cap deploy
 
@@ -47,4 +56,5 @@ Based on code from the Rails App Installer found: http://code.google.com/p/rails
 TODO:
 ====
 
-1. Test that cap sync:db works for project (placement of file)
+1. Create a generator to make installing this easier.
+

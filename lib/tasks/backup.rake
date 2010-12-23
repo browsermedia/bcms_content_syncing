@@ -1,3 +1,5 @@
+require 'bcms_content_syncing/database'
+
 namespace :db do
 
   desc "Backup database to a yaml file in db/backup"
