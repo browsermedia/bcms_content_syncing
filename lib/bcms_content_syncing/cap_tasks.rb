@@ -7,7 +7,7 @@ end
 module Cms
   module ContentSyncing
 
-    unless included_modules.include? BrowserMediaConfiguration
+    unless included_modules.include? Cms::ContentSyncing
       Capistrano::Configuration.instance(:must_exist).load do
 
 

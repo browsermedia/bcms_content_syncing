@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bcms_content_syncing}
-  s.version = "1.0.1"
+  s.version = "1.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["BrowserMedia"]
-  s.date = %q{2010-12-23}
+  s.date = %q{2011-01-13}
   s.description = %q{Allows developers to easily pull content from a production CMS to their local machine}
   s.email = %q{github@browsermedia.com}
   s.extra_rdoc_files = [
