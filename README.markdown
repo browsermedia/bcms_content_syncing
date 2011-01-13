@@ -24,6 +24,7 @@ Installation:
 3. Add the following to the projects 'Rakefile'
 
     require 'tasks/bcms_content_syncing'
+	set :rake, '/path/to/rake' # Required since rake tasks are going to be run on the server
 
 4. Create a file in 'lib/tasks' called 'bcms_content_syncing.rb' with the following in it.
 
